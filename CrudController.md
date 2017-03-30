@@ -23,6 +23,12 @@ end
 
 Note that the controller and route names should be plural.
 
+## Index/Show Views
+
+As can be seen in the example above, CrudController does *not* implement an index action by default. This is because basically every one would have to be different, so I didn't see much point. 
+
+It does, however, implement a *show* action (e.g. "/foos/#{foo.id}"), which will load the record based on id and render show.html.haml (or a JSON representation of the object if .json is applied to the id in the path).
+
 ## New/Edit Views
 
 By default, CrudController will handle all CRUD operations as-is, so there's no need to implement those actions explicitly. Simply provide the appropriate view(s) and the controller will provide reasonable behavior for the actions. This includes performing validation and saving using the user changes method (.save_by_user?).
@@ -87,11 +93,12 @@ def after_create(record)
 end
 ```
 
-If you need to provide some more specific behavior on a particular action, like overriding the default toolbar partial, you can override the action and call super:
+If you need to provide some more specific behavior on a particular action, like overriding the default toolbar partial or changing the page title, you can override the action and call super:
 
 ```ruby
 def edit
   @toolbar = 'foos/custom_toolbar'
+  @title = 'Edit a Foo'
   super
 end
 ```
@@ -112,7 +119,7 @@ def should_soft_destroy
 end
 ```
 
-
+Because deletion can happen from various places in the application, the redirect behavior is not coded into the controller, like it is for create and updated. Instead, you can pass either a *redirect* or *reload* parameter to the action. This will a path to redirect after the destroy, or instruct the controller to reload the current page, respectively. The default behavior is to redirect to the *index* action.
 
 
 
