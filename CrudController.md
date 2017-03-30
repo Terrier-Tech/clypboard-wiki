@@ -108,7 +108,7 @@ end
 By default, using the destroy action will actually delete the record: 
 
 ```haml
-%a{href: "/foos/#{foo.id}", data: {method: 'DESTROY'}} Delete Foo
+%a{href: "/foos/#{foo.id}", data: {method: 'DELETE'}} Delete Foo
 ```
 
 If, instead, you'd like the record to be soft-deleted (_state set to 2), implement *should_soft_destroy* on the *model class*:
