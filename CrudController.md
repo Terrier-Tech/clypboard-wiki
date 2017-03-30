@@ -45,3 +45,56 @@ This form can be shown using simple links with the *modal* class:
 %a.modal{href: "/foos/#{foo.id}/edit"} Edit Foo
 ```
 
+Alternatively, you can provide a form that doesn't have *remote: true* and it will be rendered using separate pages. In this case, the form will be shown on its own page with either the _new_toolbar or _edit_toolbar partials used as the toolbar.
+
+Finally, if you'd like to present different content for the new and edit forms, you can provide implementations for new.html.haml and edit.html.haml directly. 
+
+## Lifecycle
+
+While the default behavior of CrudController is sufficient for simple usage, it is often necessary to customize it for specific use cases. This can be done by implementing one or more of the following methods in the controller:
+
+```ruby
+def before_form(record)
+  # gets called before the new and edit forms are shown
+end
+
+def on_create_redirect(record)
+  # return a path to redirect to after the record is successfully created
+  # defaults to reloading the current page
+end
+
+def create_error_template(record)
+  # returns a template name to use if the creation fails
+  # defaults to "#{model_name_plural}/form"
+end
+
+def after_create(record)
+  # gets called after the record is successfully created
+end
+
+def on_update_redirect(record)
+  # return a path to redirect to after the record is successfully updated
+  # defaults to reloading the current page
+end
+
+def update_error_template(record)
+  # returns a template name to use if the update fails
+  # defaults to "#{model_name_plural}/form"
+end
+
+def after_create(record)
+  # gets called after the record is successfully updated
+end
+```
+
+If you need to provide some more specific behavior on a particular action, like overriding the default toolbar partial, you can override the action and call super:
+
+```
+def edit
+  @toolbar = 'foos/custom_toolbar'
+  super
+end
+```
+
+
+
