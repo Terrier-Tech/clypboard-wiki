@@ -89,12 +89,30 @@ end
 
 If you need to provide some more specific behavior on a particular action, like overriding the default toolbar partial, you can override the action and call super:
 
-```
+```ruby
 def edit
   @toolbar = 'foos/custom_toolbar'
   super
 end
 ```
+
+## Soft Delete
+
+By default, using the destroy action will actually delete the record: 
+
+```haml
+%a{href: "/foos/#{foo.id}", data: {method: 'DESTROY'}} Delete Foo
+```
+
+If, instead, you'd like the record to be soft-deleted (_state set to 2), implement *should_soft_destroy* on the *model class*:
+
+```ruby
+def should_soft_destroy
+  true
+end
+```
+
+
 
 
 
