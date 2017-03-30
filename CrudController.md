@@ -88,7 +88,7 @@ def update_error_template(record)
   # defaults to "#{model_name_plural}/form"
 end
 
-def after_create(record)
+def after_update(record)
   # gets called after the record is successfully updated
 end
 ```
