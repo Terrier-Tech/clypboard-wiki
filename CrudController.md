@@ -18,12 +18,14 @@ The corresponding model for the controller has dependencies as well.  In the mod
 
 ```ruby
 class Foo < MODEL_BASE_CLASS
+
   def self.icon
     'foo'
   end
 
   @display_name = 'foo'
   attr_accessor :display_name
+
 end
 ```
 
