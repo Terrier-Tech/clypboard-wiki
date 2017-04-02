@@ -14,6 +14,19 @@ class FoosController < CrudController
 end
 ```
 
+The corresponding model for the controller has dependencies as well.  In the model the field 'display_name' and function 'self.icon' must be defined.  If your model doesn't use a display_name field an attribute accessor may be used as an alternative.
+
+```ruby
+class Foo < MODEL_BASE
+  def self.icon
+    'foo'
+  end
+
+  @display_name = 'foo'
+  attr_accessor :display_name
+end
+```
+
 Then add the appropriate REST routes to routes.rb:
 
 ```ruby
