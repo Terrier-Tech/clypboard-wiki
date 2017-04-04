@@ -62,5 +62,5 @@ Regular responsive forms can be used with almost no modification. The only chang
 
 Any exceptions thrown during the execution of the progressive block will be caught and the error will be shown to the user. This - raising an exception - is also a useful way to stop the execution through code without rendering the response.
 
-
+![Progressive Error](https://dl.dropboxusercontent.com/s/qwxtbqksj8o1pz6/Screenshot%202017-04-04%2011.08.49.png)
 
