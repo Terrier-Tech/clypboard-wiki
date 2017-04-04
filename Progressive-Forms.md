@@ -17,6 +17,7 @@ class FooController < ServerController
       # some operations
       p.update 0.34, "Doing something"
       # some more operations
+    end
   end
 end
 ```
