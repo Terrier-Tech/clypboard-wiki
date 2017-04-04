@@ -36,7 +36,7 @@ def exec
 end
 ```
 
-## Response 
+## Response/View
 
 Once the code inside the _progressive_ block has executed, the controller will render the view for the action and send it back to the client. Because progressive forms use streaming JSON to send messages from the server to client, the forms **must** be remote, so the views must be .js.erb files. This is the same response format used by regular remote forms, so it requires no view modification to make an existing form to progressive.
 
@@ -47,6 +47,18 @@ An example view would be something like:
 $('.modal-content').html('<h4 class="text-center">Successfully Executed Progressive Form</h4>')
 $('.modal-actions').remove()
 ```
+
+## Form
+
+Regular responsive forms can be used with almost no modification. The only change required is to explicitly include a hidden field containing the authenticity token.
+
+```ruby
+= hidden_field_tag :authenticity_token, form_authenticity_token
+```
+
+## Errors 
+
+Any exceptions thrown during the execution of the progressive block will be caught and the error will be shown to the user. This - raising an exception - is also a useful way to stop the execution through code without rendering the response.
 
 
 
