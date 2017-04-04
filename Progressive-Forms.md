@@ -65,3 +65,9 @@ Any exceptions thrown during the execution of the progressive block will be caug
 
 ![Progressive Error](https://dl.dropboxusercontent.com/s/qwxtbqksj8o1pz6/Screenshot%202017-04-04%2011.08.49.png)
 
+
+## Notes
+
+I originally included ActionController::Live in ServerController so that it wouldn't be necessary to include it into individual controllers. However, this caused some weird behavior with certain regular actions - the action would complete and Chrome would register all the content, but wouldn't actually act like it had completed. I googled around a bit but couldn't find any evidence that this is a known issue, besides the fact that all examples show a controller with a single action.
+
+So, be wary when adding this functionality to existing controllers. It might cause an issue with other actions, might not. My test controller for this functionality (ProgressiveTestController) contains three actions, and the two non-progressive ones work fine.
