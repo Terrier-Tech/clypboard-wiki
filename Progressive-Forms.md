@@ -2,6 +2,8 @@
 
 Progressive Forms offers a way to present feedback to the user as a long running task is executing, allowing them to see the progress and potentially cancel the operation. It is based on the same technology used to execute scripts, but made more generic so that it can be used on most forms in the application with minimal modification.
 
+![Progressive Form](https://www.dropbox.com/s/ihik7a9qqzqn670/Screenshot%202017-04-04%2011.01.33.png?dl=0)
+
 ## Controller 
 
 In order to implement a progressive form, you must include ActionController::Live in your controller. Then, in the form action, execute all of your business logic inside the _execute_ method: 
