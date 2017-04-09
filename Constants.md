@@ -1,7 +1,7 @@
 Constants from Ruby that need to be used in Javascript are stored in the constants.js.erb file.  
 
-Constants are specified as:
-    `window.constants.paymentMethods = <%= Payment.payment_methods %>`
+Constants are specified as:  
+     `window.constants.paymentMethods = <%= Payment.payment_methods %>`
 
 where `window.constants.paymentMethods` is how the object(s) will be referenced in JS and `Payment.payment_methods` is the Ruby definition of the object(s).
 
