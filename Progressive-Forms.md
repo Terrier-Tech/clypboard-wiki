@@ -53,7 +53,15 @@ $('.modal-actions').remove()
 
 ## Form
 
-Regular responsive forms can be used with almost no modification. The only change required is to explicitly include a hidden field containing the authenticity token.
+Regular responsive forms can be used with almost no modification. There are two small changes required.
+
+Add the _progressive_ class to the form:
+
+```haml
+= form_for @foo, remote: true, html: {:class => 'progressive'} do |f|
+```
+
+And explicitly include a hidden field containing the authenticity token:
 
 ```ruby
 = hidden_field_tag :authenticity_token, form_authenticity_token
