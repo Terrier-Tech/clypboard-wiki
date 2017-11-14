@@ -27,7 +27,7 @@ Either way, this method will return an array of ActionLog objects.
 Besides just getting logs by record, you can perform some more arbitrary searches using ActionLogCloud#query:
 
 ```ruby
-logs = ActionLogCloud.query _time.gt => '2017-10-01', _action_type: 'delete'
+logs = ActionLogCloud.query :_time.gt => '2017-10-01', _action_type: 'delete'
 ```
 
 In the example above, we're querying on metadata of the logs themselves. The possible metadata fields are: 
@@ -38,7 +38,7 @@ In the example above, we're querying on metadata of the logs themselves. The pos
 * _record_type (class name)
 * _record_id
 
-In addition to the metadata columns, you can also query on a set of special columns that have been indexed for convenience:
+In addition to the metadata fields, you can also query on a set of special fields that have been indexed for convenience:
 
 ```ruby
 logs = ActionLogCloud.query location_id: '4ttaNlfbY1vmwB'
@@ -53,6 +53,23 @@ The available special fields are:
 
 ## Non-indexed Queries
 
-Technically, you can query by _any_ column on _any_ table. 
+Technically, you can query by _any_ changed field:
+
+```ruby
+logs = ActionLogCloud.query subtotal: 1200
+```
+
+This example will find all changes where the record's subtotal value went either two or from 1200. 
+
+The only caveat to non-indexed querying (besides the fact that it might be a bit slow) is that you can only query one field at a time. So, something like this won't work: 
+
+```ruby
+logs = ActionLogCloud.query subtotal: 1200, :_time.gt => '2017-01-01' # ERROR: need a compound index
+```
+
+If you ever run into the compound index error, I can always create one. I've already made indexes for some standard combinations (_time along with one of: _action, _record_type, _user_id, or one of the special fields).
+
+
+
 
 
