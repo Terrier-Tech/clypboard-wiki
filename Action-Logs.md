@@ -64,7 +64,8 @@ This example will find all changes where the record's subtotal value went either
 The only caveat to non-indexed querying (besides the fact that it might be a bit slow) is that you can only query one field at a time. So, something like this won't work: 
 
 ```ruby
-logs = ActionLogCloud.query subtotal: 1200, :_time.gt => '2017-01-01' # ERROR: need a compound index
+logs = ActionLogCloud.query subtotal: 1200, :_time.gt => '2017-01-01'
+# ERROR: need a compound index
 ```
 
 If you ever run into the compound index error, I can always create one. I've already made indexes for some standard combinations (_time along with one of: _action, _record_type, _user_id, or one of the special fields).
