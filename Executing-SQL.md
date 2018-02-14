@@ -49,4 +49,42 @@ end
 techs = builder.exec
 ```
 
+### as_objects
+
+Optionally, you can call the `as_objects' method on a SqlBuilder instance to have it return proper Ruby objects instead of hashes as the result. Attribute types will be automatically inferred from the names, including converting from cents to dollars: 
+
+```ruby
+locs = SqlBuilder.new
+  .select(%w(id number annual_value geo created_at))
+  .from('locations')
+  .where("zip = '55124')
+  .as_objects
+  .exec
+
+locs.each do |loc|
+  puts loc.number # and integer
+  puts loc.annual_value # a dollars float
+  puts loc.created_at # a DateTime
+end
+```
+
+You can also compute additional columns on the result set. Use the `compute_column` method with the name of the new column and a block that accepts each row: 
+
+```ruby
+locs.compute_column 'age' do |row|
+  Time.now - row.created_at
+end
+```
+
+Alternatively, you can use `compute_columns` to compute multiple columns at once: 
+
+```ruby
+locs.compute_columns do |row|
+  geo = row.geo.parse_geo_point
+  {latitude: geo.latitude, longitude: geo.longitude}
+end
+```
+
+
+
 
