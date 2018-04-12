@@ -106,6 +106,10 @@ end
 def after_update(record)
   # gets called after the record is successfully updated
 end
+
+def on_destroy_redirect(record)
+  # gets called after the record is successfully destroyed
+end
 ```
 
 If you need to provide some more specific behavior on a particular action, like overriding the default toolbar partial or changing the page title, you can override the action and call super:
