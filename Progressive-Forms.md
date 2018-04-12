@@ -46,7 +46,7 @@ Once the code inside the _progressive_ block has executed, the controller will r
 An example view would be something like:
 
 ```javascript
-// exec.js.arb
+// exec.js.erb
 $('.modal-content').html('<h4 class="text-center">Successfully Executed Progressive Form</h4>')
 $('.modal-actions').remove()
 ```
