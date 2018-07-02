@@ -1,17 +1,11 @@
 ## Strings
 
-Strings are sequences of characters:
+Strings are sequences of characters. Use `puts` to send strings to the output: 
 
 ```ruby
 name = 'andy' # simple strings use single quotes
-greeting = "hello, my name is #{name}" # use double quotes for interpolation
+puts "hello, my name is #{name}" # use double quotes for interpolation
 # 'hello, my name is andy'
-```
-
-Use `puts` to print output:
-
-```ruby
-puts 'this will get output'
 ```
 
 You can change the case of the whole string with `.upcase` and `.downcase`:
@@ -20,6 +14,14 @@ You can change the case of the whole string with `.upcase` and `.downcase`:
 puts 'Hello World'.upcase
 # HELLO WORLD
 puts 'Hello World'.downcase
+# hello world
+```
+
+More usefully, you can capitalize just the first letter of each word with `.titleize`:
+
+```ruby
+'the great gatsby'.titleize
+# 'The Great Gatsby'
 ```
 
 Remove extra whitespace with `.strip`:
@@ -40,6 +42,7 @@ puts "names has #{names.count} values"
 # names has 3 values
 numbers = [1, 5, 2, 84]
 ```
+
 You can use `%w()` as a shorthand to create an array of single-word strings:
 
 ```ruby
