@@ -195,7 +195,7 @@ end
 # ['One', 'Two', 'Three']
 ```
 
-## & shorthand
+## & Shorthand
 
 Instead of specifying a block to pass to `.each` or `.map`, you can pass a symbol prefixed with an ampersand to specify a method to call on each element:
 
@@ -204,4 +204,6 @@ Instead of specifying a block to pass to `.each` or `.map`, you can pass a symbo
 # ['One', 'Two', 'Three']
 [1.2, 5.8, 7.1].map &:round
 # [1, 6, 7]
+[' one', 'two ', ' three '].map(&:upcase).map(&:strip)
+# ['ONE', 'TWO', 'THREE']
 ```
