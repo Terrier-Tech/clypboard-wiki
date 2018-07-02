@@ -168,6 +168,7 @@ You can also use non-symbols - like strings - as keys for dictionaries. In this 
 person = {
   "full name" => "Sam Smith",
   "years old" => 26
+}
 person.keys
 # ['full name', 'years old'] 
 ```
