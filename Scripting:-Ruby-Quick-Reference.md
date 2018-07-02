@@ -94,6 +94,18 @@ end
 # timmy
 # joey
 ```
-Inside the block, the current element gets assigned to whatever variable name is placed between the pipes (`name`, in this case).
+Inside the block, the current element gets assigned to whatever variable name is placed between the pipes (`name`, in this case). This can be whatever you want. 
+
+In Clypboard scripts specifically, there is a special `each` method that is at the top level. It works just like `.each` except that it enables a special `puts_count` method to make it easy to see the progress of your loop:
+
+```ruby
+each names do |name|
+  puts_count name
+end
+# [1 of 3] bobby
+# [2 of 3] timmy
+# [3 of 3] joey
+```
+
 
 
