@@ -148,8 +148,31 @@ You can get all of the keys or all of the values from a dictionary using the `.k
 person.keys
 # [:name, :age, :email]
 person.values
-# ['billy', 42, 'billy@example.com']
+# ['billy', 44, 'billy@example.com']
 ```
+
+Dictionaries also have an `.each` method which iterates over it's values, except that the block will also accept the key as the first argument:
+
+```ruby
+person.each do |key, value|
+  puts "#{key.to_s.titleize}: #{value}"
+end
+# Name: billy
+# Age: 44
+# Email: billy@example.com
+```
+
+You can also use non-symbols - like strings - as keys for dictionaries. In this case, you have to use the "fat arrow" syntax:
+
+```ruby
+person = {
+  "full name" => "Sam Smith",
+  "years old" => 26
+person.keys
+# ['full name', 'years old'] 
+```
+
+This syntax is used when you need keys that contain special characters like spaces or periods.
 
 
 
