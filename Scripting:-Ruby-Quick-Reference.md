@@ -1,16 +1,32 @@
 ## Strings
 
+Strings are sequences of characters:
+
 ```ruby
 name = 'andy' # simple strings use single quotes
 greeting = "hello, my name is #{name}" # use double quotes for interpolation
 # 'hello, my name is andy'
 ```
+
 Use `puts` to print output:
 
 ```ruby
 puts 'this will get output'
 ```
 
+You can change the case of the whole string with `.upcase` and `.downcase`:
+
+```ruby
+puts 'Hello World'.upcase
+# HELLO WORLD
+puts 'Hello World'.downcase
+```
+
+Remove extra whitespace with `.strip`:
+
+```ruby
+'  this has extra whitespace  '.strip
+# 'this has extra whitespace'
 
 ## Arrays
 
@@ -41,6 +57,23 @@ Or you can use shorthand methods like `.first`:
 puts "#{names.first} is the first name and #{names.second} is the second"
 # bobby is the first name and timmy is the second
 ```
+
+## Split and Join
+
+Strings can be split by separators - like spaces or commas - into arrays: 
+
+```ruby
+comps = 'one,two,three,four'.split ','
+# ['one', 'two', 'three', 'four']
+```
+
+Conversely, arrays can be joined with separators into strings:
+
+```ruby
+comps.join ' and '
+# 'one and two and three and four'
+```
+
 
 
 
