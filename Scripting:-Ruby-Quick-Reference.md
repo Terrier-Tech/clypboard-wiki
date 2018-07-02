@@ -176,4 +176,32 @@ person.keys
 This syntax is used when you need keys that contain special characters like spaces or periods.
 
 
+## Map
 
+The `.map` method is similar to `.each` except that it collects the results of each iteration and returns them as a separate array. For example, you could take an array of numbers and convert them to formatted strings:
+
+```ruby
+numbers = [1, 4, 6]
+strings = numbers.map do |num|
+  "#{num}*2 is #{num*2}"
+end
+# ['1*2 is 2', '4*2 is 8', '6*2 is 12']
+```
+
+`.map` can also be used to convert strings into other strings:
+
+```ruby
+%w(one two three).map{|s| s.titleize}
+# ['One', 'Two', 'Three']
+```
+
+## & shorthand
+
+Instead of specifying a block to pass to `.each` or `.map`, you can pass a symbol prefixed with an ampersand to specify a method to call on each element:
+
+```ruby
+%w(one two three).map &:titleize # same as above
+# ['One', 'Two', 'Three']
+[1.2, 5.8, 7.1].map &:round
+# [1, 6, 7]
+```
