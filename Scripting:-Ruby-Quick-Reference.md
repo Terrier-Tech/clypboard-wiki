@@ -31,6 +31,18 @@ Remove extra whitespace with `.strip`:
 # 'this has extra whitespace'
 ```
 
+## Symbols
+
+Symbols are similar to strings except that they can't contain any spaces or special characters. They are used primarily as dictionary keys (see Dictionaries below). Symbols are created without quotes, just prepend the value with a colon:
+
+```
+foo = :bar # this is a symbol
+foo.to_s # convert a symbol to a string
+# 'bar'
+'bar'.so_sym # convert a symbol to a string
+# :bar
+```
+
 
 ## Arrays
 
@@ -108,4 +120,10 @@ end
 ```
 
 
+## Dictionaries
 
+Dictionaries are collections of key-value pairs. They are used to associate one thing (the key) with another thing (the value). Dictionaries are created using curly brackets, with keys and values separated by colons:
+
+```ruby
+
+```
