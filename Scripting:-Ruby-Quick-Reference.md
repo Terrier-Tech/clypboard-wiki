@@ -27,6 +27,8 @@ Remove extra whitespace with `.strip`:
 ```ruby
 '  this has extra whitespace  '.strip
 # 'this has extra whitespace'
+```
+
 
 ## Arrays
 
