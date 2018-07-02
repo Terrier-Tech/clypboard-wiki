@@ -120,19 +120,19 @@ end
 ```
 
 
-## Dictionaries
+## Hashes
 
-Dictionaries are collections of key-value pairs. They are used to associate one thing (the key) with another thing (the value). Dictionaries are created using curly brackets, with keys and values separated by colons:
+Hashes are collections of key-value pairs. They are used to associate one thing (the key) with another thing (the value). Hashes are created using curly brackets, with keys and values separated by colons:
 
 ```ruby
 person = {
   name: 'billy',
   age: 43,
   email: 'billy@example.com'
-} # this is a dictionary
+} # this is a hash
 ```
 
-Dictionaries created this way have symbols as keys. Just like arrays, the values can be accessed with square brackets:
+Hashes created this way have symbols as keys. Just like arrays, the values can be accessed with square brackets:
 
 ```ruby
 puts "#{person[:name]} is #{person[:age]} years old"
@@ -142,7 +142,7 @@ puts "his age is now #{person[:age]}"
 # his age is now 44
 ```
 
-You can get all of the keys or all of the values from a dictionary using the `.keys` and `.values` methods, respectively. Both will return an array.
+You can get all of the keys or all of the values from a hash using the `.keys` and `.values` methods, respectively. Both will return an array.
 
 ```ruby
 person.keys
@@ -151,7 +151,7 @@ person.values
 # ['billy', 44, 'billy@example.com']
 ```
 
-Dictionaries also have an `.each` method which iterates over it's values, except that the block will also accept the key as the first argument:
+Hashes also have an `.each` method which iterates over it's values, except that the block will also accept the key as the first argument:
 
 ```ruby
 person.each do |key, value|
@@ -162,7 +162,7 @@ end
 # Email: billy@example.com
 ```
 
-You can also use non-symbols - like strings - as keys for dictionaries. In this case, you have to use the "fat arrow" syntax:
+You can also use non-symbols - like strings - as keys for hashes. In this case, you have to use the "fat arrow" syntax:
 
 ```ruby
 person = {
