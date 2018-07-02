@@ -39,7 +39,7 @@ Symbols are similar to strings except that they can't contain any spaces or spec
 foo = :bar # this is a symbol
 foo.to_s # convert a symbol to a string
 # 'bar'
-'bar'.so_sym # convert a symbol to a string
+'bar'.to_sym # convert a symbol to a string
 # :bar
 ```
 
@@ -125,5 +125,31 @@ end
 Dictionaries are collections of key-value pairs. They are used to associate one thing (the key) with another thing (the value). Dictionaries are created using curly brackets, with keys and values separated by colons:
 
 ```ruby
-
+person = {
+  name: 'billy',
+  age: 43,
+  email: 'billy@example.com'
+} # this is a dictionary
 ```
+
+Dictionaries created this way have symbols as keys. Just like arrays, the values can be accessed with square brackets:
+
+```ruby
+puts "#{person[:name]} is #{person[:age]} years old"
+# billy is 43 years old
+person[:age] = 44
+puts "his age is now #{person[:age]}"
+# his age is now 44
+```
+
+You can get all of the keys or all of the values from a dictionary using the `.keys` and `.values` methods, respectively. Both will return an array.
+
+```ruby
+person.keys
+# [:name, :age, :email]
+person.values
+# ['billy', 42, 'billy@example.com']
+```
+
+
+
