@@ -80,5 +80,20 @@ comps.join ' and '
 ```
 
 
+## Loops
+
+Iterate through each element of an array with `.each`, which takes a block as an argument. Blocks can be declared with either `{...}` or `do...end`. The latter is generally only used if the block is a single line.
+
+```ruby
+names.each{|name| puts name} 
+# is exactly the same as:
+names.each do |name|
+  puts name
+end
+# bobby
+# timmy
+# joey
+```
+Inside the block, the current element gets assigned to whatever variable name is placed between the pipes (`name`, in this case).
 
 
