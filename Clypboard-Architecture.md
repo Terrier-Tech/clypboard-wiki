@@ -1,1 +1,1 @@
-![](https://plunkettsnet-my.sharepoint.com/personal/andy_selvig_plunketts_net/Documents/Clypboard/Learning/Clypboard%20Architecture.png?cid=b61b88ea-0741-4517-8dcc-8dd06b4c0106)
+![](art/clypboard-architecture.png)
