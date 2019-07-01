@@ -221,3 +221,35 @@ Instead of specifying a block to pass to `.each` or `.map`, you can pass a symbo
 [' one', 'two ', ' three '].map(&:upcase).map(&:strip)
 # ['ONE', 'TWO', 'THREE']
 ```
+
+## Sorting
+
+The simplest way to sort an array is with the `sort` method. This will sort the contents of the array using standard alphanumerical order:
+
+```ruby
+['gamma', 'beta', 'alpha'].sort
+# ['alpha', 'beta', 'gamma']
+
+[3, 1, 6, 5].sort
+# [1, 3, 5, 6]
+```
+
+This only works for arrays with strings or numbers, though. To sort an array of arbitrary values, use the `sort_by` method. It takes a block that computes a value to use for sorting:
+
+```ruby
+a = [
+  {name: 'zeke'},
+  {name: 'alice'},
+  {name: 'matt'}
+]
+a.sort_by {|h| h[:name]}
+# [{name: 'alice'}, {name: 'matt'}, {name: 'zeke'}]
+```
+
+If you're sorting objects and want to sort by the result of one its methods, you can use the & shorthand:
+
+```ruby
+strings = %w(longword foo bars)
+strings.sort_by(&:size)
+# ['foo', 'bars', 'longword']
+```
