@@ -261,9 +261,9 @@ strings.sort_by(&:size)
 
 To filter the contents of an array using a certain criteria, use the `select` method:
 
-``ruby
+```ruby
 a = [3, 6, 9, 1, 2, 4, 7]
 a.filter {|n| n < 6}
-[3, 1, 2, 4]
+# [3, 1, 2, 4]
 ```
 
