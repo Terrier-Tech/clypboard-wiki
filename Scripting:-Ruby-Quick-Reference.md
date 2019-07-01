@@ -33,7 +33,7 @@ Remove extra whitespace with `.strip`:
 
 ## Symbols
 
-Symbols are similar to strings except that they can't contain any spaces or special characters. They are used primarily as dictionary keys (see Dictionaries below). Symbols are created without quotes, just prepend the value with a colon:
+Symbols are similar to strings except that they can't contain any spaces or special characters. They are used primarily as hash keys (see Hashes below). Symbols are created without quotes, just prepend the value with a colon:
 
 ```
 foo = :bar # this is a symbol
@@ -59,6 +59,13 @@ You can use `%w()` as a shorthand to create an array of single-word strings:
 
 ```ruby
 names = %w(bobby timmy joey) # this is the same as above
+```
+
+Similarly, an array fo symbols can be created with `%i()`:
+
+```ruby
+symbols = %i(one two three)
+# [:one, :two, :three]
 ```
 
 Arrays are indexed using square brackets, starting at zero:
