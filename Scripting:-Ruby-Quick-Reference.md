@@ -209,6 +209,7 @@ end
 # ['One', 'Two', 'Three']
 ```
 
+
 ## & Shorthand
 
 Instead of specifying a block to pass to `.each` or `.map`, you can pass a symbol prefixed with an ampersand to specify a method to call on each element:
@@ -221,6 +222,7 @@ Instead of specifying a block to pass to `.each` or `.map`, you can pass a symbo
 [' one', 'two ', ' three '].map(&:upcase).map(&:strip)
 # ['ONE', 'TWO', 'THREE']
 ```
+
 
 ## Sorting
 
@@ -253,3 +255,15 @@ strings = %w(longword foo bars)
 strings.sort_by(&:size)
 # ['foo', 'bars', 'longword']
 ```
+
+
+## Filtering
+
+To filter the contents of an array using a certain criteria, use the `select` method:
+
+``ruby
+a = [3, 6, 9, 1, 2, 4, 7]
+a.filter {|n| n < 6}
+[3, 1, 2, 4]
+```
+
