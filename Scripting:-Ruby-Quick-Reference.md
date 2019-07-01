@@ -75,11 +75,18 @@ puts "#{names[0]} is the first name and #{names[1]} is the second"
 # bobby is the first name and timmy is the second
 ```
 
-Or you can use shorthand methods like `.first`:
+Negative indexes count from the end of the array:
 
 ```ruby
-puts "#{names.first} is the first name and #{names.second} is the second"
-# bobby is the first name and timmy is the second
+puts "#{names[-1]} is the last name and #{names[-2]} is the second to last"
+# joey is the last name and timmy is the second to last
+```
+
+Or you can use shorthand methods like `.first` and `.last`:
+
+```ruby
+puts "#{names.first} is the first name and #{names.last} is the last"
+# bobby is the first name and joey is the last
 ```
 
 ## Split and Join
