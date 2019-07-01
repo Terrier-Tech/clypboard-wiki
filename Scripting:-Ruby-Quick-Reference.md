@@ -263,7 +263,7 @@ To filter the contents of an array using a certain criteria, use the `select` me
 
 ```ruby
 a = [3, 6, 9, 1, 2, 4, 7]
-a.filter {|n| n < 6}
+a.select {|n| n < 6}
 # [3, 1, 2, 4]
 ```
 
