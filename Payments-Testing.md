@@ -1,4 +1,4 @@
-Accepting Payment modes:
+### Accepting Payment modes:
 1) Credit card on invoice modal 
 - Stored card
 - Stored account
@@ -21,7 +21,7 @@ Accepting Payment modes:
 8) Balance remaining payment
 9) Copesan upload
 
-Manipulating Payment modes:
+### Manipulating Payment modes:
 1) Apply
 2) Partial Unapply
 3) Full Unapply
@@ -31,13 +31,13 @@ Manipulating Payment modes:
 7) Transfer partial
 8) Commit to bank
 
-Applying/Unapplying:
+### Applying/Unapplying:
 1) Apply to invoice
 2) Unapply from invoice
 3) Void invoice
 4) Re-pend invoice
 
-Screens:
+### Screens:
 1) Open Invoices
 2) Payment modal
 3) Apply Open Credits
@@ -48,7 +48,7 @@ Screens:
 8) Invoices - HTML and PDF
 9) Invoices - Consolidated HTML and PDF
 
-Reports:
+### Reports:
 1) AR
 2) Payments
 3) Open Payments
