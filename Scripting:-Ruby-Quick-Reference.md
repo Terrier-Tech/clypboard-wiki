@@ -47,7 +47,7 @@ foo.to_s # convert a symbol to a string
 
 There are `dollars` and `cents` methods to help convert numbers to human-readable currency:
 
-```
+```ruby
 puts 1234.dollars # dollar sign and commas automatically added
 # $1,234.00
 puts 1234.cents
