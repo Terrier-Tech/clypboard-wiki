@@ -43,6 +43,21 @@ foo.to_s # convert a symbol to a string
 # :bar
 ```
 
+## Currency
+
+There are `dollars` and `cents` methods to help convert numbers to human-readable currency:
+
+```
+puts 1234.dollars # dollar sign and commas automatically added
+# $1,234.00
+puts 1234.cents
+# $12.34
+puts 1234.dollars(false) # pass false to hide the cents
+# $1,234
+puts 1234.cents(false)
+# $12
+```
+
 
 ## Arrays
 
