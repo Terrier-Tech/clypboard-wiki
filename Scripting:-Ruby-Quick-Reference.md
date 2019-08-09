@@ -35,7 +35,7 @@ Remove extra whitespace with `.strip`:
 
 Symbols are similar to strings except that they can't contain any spaces or special characters. They are used primarily as hash keys (see Hashes below). Symbols are created without quotes, just prepend the value with a colon:
 
-```
+```ruby
 foo = :bar # this is a symbol
 foo.to_s # convert a symbol to a string
 # 'bar'
