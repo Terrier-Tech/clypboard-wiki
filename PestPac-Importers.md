@@ -10,7 +10,7 @@ Importers that import data directly from the PestPac database should also implem
 
 `build_pestpac_query(builder, options)` - Builds the query (using the SqlBuilder instance `builder`) with the provided options hash, which is provided when the importer is called (see Importer Tasks sections).
 
-Instead of importing directly from the PestPac database, some importers read data from a local JSON or YAML file. These only need to implement `load_pestpac_record`.
+Instead of importing directly from the PestPac database, some importers read data from a local JSON, CSV, or YAML file. These only need to implement `load_pestpac_record`.
 
 `BaseImporter` includes `Loggable`, so all logging tasks should be done using either `debug`, `info`, or `warn` instead of `puts`.
 
@@ -27,7 +27,7 @@ task serviceorders: :environment do
 end
 ```
 
-Tasks that import from local files should either call `load_local_csv` or `load_local_csv`, passing the name of the file to load and (optional) options hash. The files are read from `/import/<CLYP>`. For example:
+Tasks that import from local files should either call `load_local_csv`, `load_local_json`, or `load_local_yaml`, passing the name of the file to load and (optional) options hash. The files are read from `/import/<CLYP>`. For example:
 
 ```ruby
 task load_employees: :environment do
