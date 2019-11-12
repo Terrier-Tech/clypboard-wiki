@@ -2,12 +2,20 @@ To import data from PestPac to Clypboard, we run an instance of SQL Server on th
 
 ## Importer Classes
 
-Each importer should be a Ruby class (stored in /app/importers) that inherits from BaseImporter. The importer should implement a specific set of methods depending on the source of the data.
+Each importer should be a Ruby class (stored in /app/importers) that inherits from BaseImporter. All PestPac importers must implement this method:
 
-### PestPac Importers
+```ruby
+load_pestpac_record(data, options)
+```
+This method gets called once for each record that is being imported. It should return the Clypboard object that's imported if successful, or nil if it's not. Exceptions should only be raised if the importer encounters an error that needs immediate fixing - as opposed to a malformed PestPac record.
 
-Importers that import data directly from the PestPac database should implement these two methods:
+Importers that import data directly from the PestPac database should also implement:
 
-`build_pestpac_query(builder, options)` - builds the query (using `builder`) using the provided options hash, which is provided when the importer is called (see Import Tasks sections).
+```ruby
+build_pestpac_query(builder, options)
+```
+Builds the query (using the SqlBuilder instance `builder`) with the provided options hash, which is provided when the importer is called (see Import Tasks sections).
 
-`load_pestpac_record(data, options)` - this method gets called once for each record that is retrieved from the query built with `build_pestpac_query`. 
+Instead of importing directly from the PestPac database, some importers read data from a local JSON or YAML file. These only need to implement `load_pestpac_record`.
+
+
