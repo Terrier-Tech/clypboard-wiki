@@ -27,12 +27,12 @@ task serviceorders: :environment do
 end
 ```
 
-Tasks that import from local files should either call `load_local_csv` or `load_local_csv`, passing the name of the file to load and (optional) options hash. For example:
+Tasks that import from local files should either call `load_local_csv` or `load_local_csv`, passing the name of the file to load and (optional) options hash. The files are read from `/import/<CLYP>`. For example:
 
 ```ruby
 task load_employees: :environment do
   importer = EmployeeImporter.new
-  importer.load_local_csv 'employees', force: true
+  importer.load_local_csv 'employees', force: true # reads /import/lloyd/employees.csv
 end
 ```
 
