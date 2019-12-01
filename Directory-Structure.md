@@ -1,4 +1,4 @@
-
+```
 app/
     assets/
         javascripts/
@@ -21,6 +21,7 @@ app/
     views/
         app/  # all app views, in subdirectories based on the controller name
         portal/  # all views for the portal
+```
 
 **NOTE:** All app actions and views (except for those that won't be used on the device, like the login screen)
 should _not_ contain any Ruby code. All user interface logic must be done on the client side.
