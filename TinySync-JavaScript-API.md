@@ -29,7 +29,7 @@ tinysync.db.get(
     'location'
     {
         where: {search_tags: 'main'}
-        include: 'customer'
+        include: ['customer']
         limit: 10
         order: {last_name: 'ASC'}
     },
@@ -62,7 +62,7 @@ tinysync.db.safeGet(
     'location',
     {
         where: {search_tags: 'main'}
-        include: 'customer'
+        include: ['customer']
         limit: 10
         order: {last_name: 'ASC'}
     },
@@ -73,29 +73,30 @@ tinysync.db.safeGet(
 
 If you know the if of a record and only want that one value, you can use the find() method instead:
 
-```javascript
+```coffeescript
 tinysync.db.safeGet(
-    'location',
-    '2mrJZKtNbMHoaJ',
-    {include: 'customer'},
-    function (location) {
-        alert('Found location ' + location.display_name)
+    'location'
+    '2mrJZKtNbMHoaJ'
+    {
+        include: ['customer']
     }
+    (location) >
+        alert("Found location #{location.display_name}")
 )
 ```
 
 find() also takes an options argument where you can specify the same _include_ clause as get().
 
-To count the number of objects returned from a given query, without actually serializing them all (in order to improve performance),
-you can use the count() function:
+To count the number of objects returned from a given query, without actually serializing them all (in order to improve performance), you can use the count() function:
 
-```javascript
+```coffeescript
 tinysync.db.count(
-    'location',
-    {where: {zip: '55124'}},
-    function (result) {
-        alert('Found ' + result.count + ' locations!')
+    'location'
+    {
+        where: {zip: '55124'}
     }
+    (result) ->
+        alert("Found #{result.count} locations!")
 )
 ```
 
@@ -105,48 +106,51 @@ The response from the server will have the same format as the get() function,
 and will contain the full record if the operation was a success. 
 Note that the second argument must be an object with the name of the entity as the key:
 
-```javascript
+```coffeescript
 tinysync.db.create(
-    'customer',
-    {customer: {number: 1234567, name: 'Demo Customer'}},
-    function (result) {
-        if (result.status == 'success')
+    'customer'
+    {
+        customer: {number: 1234567, name: 'Demo Customer'}
+    }
+    (result) ->
+        if result.status == 'success'
             alert('Created customer ' + result.records[0].id)
         else
             alert('Error creating customer: ' + result.message)
-    }
 )
 ```
 
 The update method is nearly identical, except that you must explicitly pass the id of the record you'd like to update.
 
-```javascript
+```coffeescript
 tinysync.db.update(
-    'customer',
-    '53949ab5caa9d04a6a0000f9',
-    {customer: {number: 1234567, name: 'Demo Customer'}},
-    function (result) {
-        if (result.status == 'success')
+    'customer'
+    '53949ab5ca'
+    {
+        customer: {number: 1234567, name: 'Demo Customer'}
+    }
+    (result) ->
+        if result.status == 'success'
             alert('Updated customer ' + result.records[0].id)
         else
             alert('Error updating customer: ' + result.message)
-    }
 )
 ```
 
 In order to write code that works for both new and existing records, you can use the upsert() function.
 It takes the same arguments as create(), but will update an existing record if the object you're passing has an id:
 
-```javascript
+```coffeescript
 tinysync.db.upsert(
-    'customer',
-    {customer: someCustomerData},
-    function (result) {
-        if (result.status == 'success')
+    'customer'
+    {
+        customer: someCustomerData
+    }
+    (result) ->
+        if result.status == 'success'
             alert('Upserted customer ' + result.records[0].id)
         else
             alert('Error upserting customer: ' + result.message)
-    }
 )
 ```
 
@@ -154,15 +158,14 @@ The create, update, upsert, and count methods all have _safe_ variants similar t
 
 The destroy method deletes a record from the database, and only requires an id.
 
-```javascript
+```coffeescript
 tinysync.db.destroy(
-    'customer',
-    '53949ab5caa9d04a6a0000f9',
-    function (result) {
-        if (result.status == 'success')
+    'customer'
+    '53949ab5ca'
+    (result) ->
+        if result.status == 'success'
             alert('Deleted customer ' + result.records[0].id)
         else
             alert('Error deleting customer: ' + result.message)
-    }
 )
 ```
