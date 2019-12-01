@@ -24,13 +24,17 @@ On Android, it uses a custom Java bridge class.
 To retrieve objects from the database, use the get() method.
 Its arguments are: the name of the collection, the query, and a callback function:
 
-```javascript
+```coffeescript
 tinysync.db.get(
-    'location',
-    {where: {search_tags: 'main'}, include: 'customer', limit: 10, order: {last_name: 'ASC'}},
-    function (result) {
-        alert('Found ' + result.records.length + ' locations!')
-    }
+    'location'
+    {
+        where: {search_tags: 'main'}
+        include: 'customer'
+        limit: 10
+        order: {last_name: 'ASC'}
+    },
+    (result) -> 
+        alert("Found #{result.records.length} locations!")
 )
 ```
     
@@ -53,13 +57,17 @@ If you assume that the query will succeed and are okay with some default error h
 (i.e. all waiting overlays are cleared and an alert pops with the error message), 
 then you can use the _safe_ variant that returns the resulting objects directly:
 
-```javascript
+```coffeescript
 tinysync.db.safeGet(
     'location',
-    {where: {search_tags: 'main'}, include: 'customer', limit: 10, order: {last_name: 'ASC'}},
-    function (locations) {
-        alert('Found ' + locations.length + ' locations!')
-    }
+    {
+        where: {search_tags: 'main'}
+        include: 'customer'
+        limit: 10
+        order: {last_name: 'ASC'}
+    },
+    (locations) -> 
+        alert("Found #{locations.length} locations!")
 )
 ```
 
