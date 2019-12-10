@@ -52,4 +52,15 @@ is_production_enabled? # ruby
 clyp.isProductionEnabled() // javascript
 ```
 
+## Get Clyp Value
+
+Because accessing the clyp for a value can create silent failures in the code a couple methods have been introduced to raise an error and let you know the value you're requesting isn't accessible. 
+
+```
+get_clyp_value(path_str) # ruby
+clyp.get_clyp_value(pathStr) // javascript
+```
+
+the input variable is a string of the path you're trying to access.  It can be delimited by , / ; or white space.  Eg. get_clyp_value('time_entry production_rate holiday') is the same as get_clyp_value('time_entry/production_rate/holiday').  This method will raise an error in ruby and return null in javascript and log the error to the console.
+
 
