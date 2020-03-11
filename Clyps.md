@@ -17,11 +17,19 @@ CLYP # ruby
 clyp.name() // javascript
 ```
 
-The clyp configuration value are also available:
+The clyp configuration values can be retrieved with the following helper functions:
 
 ```
-CLYP_CONFIG['key'] # ruby
-clyp.config()['key'] // javascript
+get_clyp_value?(path_str) # ruby - returns nil if value doesn't exist
+get_clyp_value!(path_str) # ruby - raises error if value doesn't exist
+clyp.getValue(pathStr) // javascript
+```
+
+Note that nested objects can be delimited with forward slashes:
+
+```
+get_clyp_value!('company') # returns the company information as a hash
+get_clyp_value!('company/name') # returns the 'name' field from the 'company' hash
 ```
 
 Public files specific to the clyp are served from:
@@ -51,17 +59,5 @@ So, instead of checking such cases with the Rails environment, there are helper 
 is_production_enabled? # ruby
 clyp.isProductionEnabled() // javascript
 ```
-
-## Get Clyp Value
-
-Because accessing the clyp for a value can create silent failures in the code a couple methods have been introduced to raise an error and let you know the value you're requesting isn't accessible. 
-
-```
-get_clyp_value?(path_str) # ruby - returns nil if value doesn't exist
-get_clyp_value!(path_str) # ruby - raises error if value doesn't exist
-clyp.getValue(pathStr) // javascript
-```
-
-the input variable is a string of the path you're trying to access.  It can be delimited by , / ; or white space.  Eg. get_clyp_value('time_entry production_rate holiday') is the same as get_clyp_value('time_entry/production_rate/holiday').  This method will raise an error in ruby and return null in javascript and log the error to the console.
 
 
